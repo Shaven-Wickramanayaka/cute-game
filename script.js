@@ -16,6 +16,7 @@ const player = {
 // store items to collect
 const items = [];
 let score = 0;
+let lives = 20;
 
 // draw your player
 function drawPlayer() {
@@ -47,6 +48,11 @@ function drawScore() {
   ctx.font = "bold 20px Arial";
   ctx.fillText("Score: " + score, 10, 30);
 }
+function drawLives() {
+  ctx.fillStyle = "#fff";
+  ctx.font = "bold 20px Arial";
+  ctx.fillText("Lives " + lives, 10, 80);
+}
 
 // update the player's position
 function updatePlayer() {
@@ -71,9 +77,9 @@ function updateItems() {
       score++;
     }
 
-    // remove if it's off the screen
     if (item.y > canvas.height) {
       items.splice(index, 1);
+      lives--;
     }
   });
 }
@@ -99,7 +105,7 @@ function gameLoop() {
   drawPlayer();
   drawItems();
   drawScore();
-
+  drawLives();
   requestAnimationFrame(gameLoop);
 }
 
