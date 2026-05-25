@@ -21,7 +21,7 @@ let dead = false;
 
 // draw your player
 function drawPlayer() {
-  ctx.fillStyle = "#FFD700";
+  ctx.fillStyle = "#740000";
   ctx.fillRect(player.x, player.y, player.width, player.height);
   // draw a cuteee face
   ctx.fillStyle = "#000";
@@ -36,7 +36,7 @@ function drawPlayer() {
 // draw the items
 function drawItems() {
   items.forEach((item, index) => {
-    ctx.fillStyle = "#FF69B4";
+    ctx.fillStyle = "#c5c5c5";
     ctx.beginPath();
     ctx.arc(item.x, item.y, item.radius, 0, Math.PI * 2);
     ctx.fill();
