@@ -16,7 +16,8 @@ const player = {
 // store items to collect
 const items = [];
 let score = 0;
-let lives = 20;
+let lives = 10;
+let dead = false;
 
 // draw your player
 function drawPlayer() {
@@ -98,14 +99,23 @@ function createItem() {
 // your main game loop
 function gameLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  updatePlayer();
-  updateItems();
-
+  if (!dead) {
+    updatePlayer();
+    updateItems();
+  }
+  if (dead) {
+    ctx.fillStyle = "#fff";
+    ctx.font = "bold 20px Arial";
+    ctx.fillText("Your Score is " + score, 130, 300);
+  }
   drawPlayer();
   drawItems();
   drawScore();
   drawLives();
+  if (lives <= 0) {
+    dead = true;
+    finalScore = score;
+  }
   requestAnimationFrame(gameLoop);
 }
 
